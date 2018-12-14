@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+	<style type="text/css">
+		.leftArc{fill:#6EEB83;}
+		.leftArc{fill:#FFF;}
+		.bridge{fill:#BDD140;}
+		.bridge{fill:rgba(255,255,255,.2);}
+		.rightArc{fill:#F6AE2D;}
+		.rightArc{fill:#FFF;}
+	</style>
+	<polygon class="leftArc" points="256,290.6 75.2,471.4 6,471.4 6,40.6 "/>
+	<polygon class="bridge" points="436.8,471.4 75.2,471.4 256,290.6 "/>
+	<polygon class="rightArc" points="506,40.6 506,471.4 436.8,471.4 256,290.6 "/>
+</svg>
