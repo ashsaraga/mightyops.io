@@ -111,6 +111,9 @@ function _mightyops_scripts() {
 	// _s Styles
 	wp_enqueue_style('_mightyops-styles', get_template_directory_uri() . '/css/main.css');
 
+	// Accio Script
+	wp_enqueue_script('_accio-scripts', get_template_directory_uri() . '/js/castAccio.js', array('jquery'), true);
+
 	// _s Scripts
 	wp_enqueue_script('_mightyops-scripts', get_template_directory_uri() . '/js/main.js', array('jquery'), true);
 
@@ -149,13 +152,39 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  * Custom Post Types
  */
 // Projects
-require get_template_directory() . '/inc/posttype-projects.php';
+require get_template_directory() . '/inc/posttype-clients.php';
+// Skills
+require get_template_directory() . '/inc/posttype-skills.php';
 
 /**
  * Custom Taxonomies
  */
 // Skills
 require get_template_directory() . '/inc/taxonomy-skills.php';
+
+// Enable WP media uploader for custom post types
+function media_uploader() {
+  global $post_type;
+  if( 'projects' == $post_type) {
+    if(function_exists('wp_enqueue_media')) {
+      wp_enqueue_media();
+    }
+    else {
+      wp_enqueue_script('media-upload');
+      wp_enqueue_script('thickbox');
+      wp_enqueue_style('thickbox');
+    }
+  }
+}
+add_action('admin_enqueue_scripts', 'media_uploader');
+
+// Enable SVGs in media uploader
+function add_svg_to_upload_mimes( $upload_mimes ) {
+	$upload_mimes['svg'] = 'image/svg+xml';
+	$upload_mimes['svgz'] = 'image/svg+xml';
+	return $upload_mimes;
+}
+add_filter( 'upload_mimes', 'add_svg_to_upload_mimes', 10, 1 );
 
 // Enable the excerpt on pages
 add_post_type_support( 'page', 'excerpt' );

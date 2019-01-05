@@ -11,20 +11,24 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'mightyops | Mighty' ) ); ?>">
+	<footer class="has-background-midnight has-text-white has-text-centered">
+		<div>
+			<div class="has-text-centered">
+				<svg class="logo">
+					<use xlink:href="#mighty-mono"></use>
+				</svg>
+			</div>
+			<nav>
 				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'mightyops | Mighty' ), 'WordPress' );
+				wp_nav_menu( array(
+					'theme_location' 	=> 'Social Links',
+					'menu_id'        	=> 'primary-social',
+					'menu_class'			=> 'social__links',
+					'container'				=> false
+				) );
 				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'mightyops | Mighty' ), 'mightyops | Mighty', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
+			</nav><!-- #site-navigation -->
+		</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

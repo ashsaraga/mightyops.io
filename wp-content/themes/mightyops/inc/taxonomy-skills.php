@@ -29,7 +29,7 @@ function create_skills() {
     'rewrite' => array( 'slug' => 'topic' )
   );
 
-  register_taxonomy( 'skills', 'projects' , $args);
+  register_taxonomy( 'skills', 'clients' , $args);
 }
 
 add_action( 'init', 'create_skills', 0 );
