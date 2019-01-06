@@ -522,6 +522,13 @@ footer nav ul li {
 	font-size: 1.5rem;
 }
 
+.icon {
+	display: inline-block;
+	margin: 0;
+	white-space: nowrap;
+	width: 1.875rem;
+}
+
 #primary-social {
 	font-family: font-awesome-brands;
 }

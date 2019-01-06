@@ -65,7 +65,7 @@ get_header();
 			<h2 class="is-size-3 has-text-weight-medium">My skillset, <span class="has-underline-mod1">Full Stack</span> and growing.</h2>
 			<p class="is-size-5 has-text-black has-text-weight-regular">I’m always looking for new skills and ways to improve my work.  Using a system or language not listed here?  Drop me a line!  Good chance I’ve come across it and have some ideas for you.</p>
 			<div class="is-flex has-margin-2">
-				<div class="has-background-mist has-padding-4 fits-flex-50 cat1">
+				<div class="has-background-mist has-padding-4 fits-flex-50 cat1 has-margin-5 has-margin-bottom">
 					<h3 class="is-size-5 is-uppercase has-text-weight-regular">Front End</h3>
 					<hr class="has-background-midnight has-margin-5" />
 					<?php
@@ -81,7 +81,7 @@ get_header();
 					wp_reset_postdata();
 					?>
 				</div>
-				<div class="has-background-mist has-padding-4 fits-flex-50 cat2">
+				<div class="has-background-mist has-padding-4 fits-flex-50 cat2 has-margin-5 has-margin-bottom">
 					<h3 class="is-size-5 is-uppercase has-text-weight-regular">Back End</h3>
 					<hr class="has-background-midnight has-margin-5" />
 					<?php
