@@ -57,6 +57,20 @@ get_header();
 				wp_reset_postdata();
 				?>
 			</div>
+			<!-- <div class="has-margin-1">
+				<h3 class="is-size-4 is-uppercase has-hr has-text-weight-light has-text-right has-letter-spacing-1 hr-header"><span class="has-background-midnight has-padding-6 has-padding-left">Personal Projects</span></h3>
+			</div>
+			<div class="is-flex">
+				<?php
+				global $post;
+				$homebrewArgs = array('posts_per_page' => 6, 'post_type' => 'homebrew', 'order' => 'ASC', 'order_by' => 'title');
+				$homebrewPosts = get_posts($homebrewArgs);
+				foreach ($homebrewPosts as $post) : setup_postdata($post) ;
+					get_template_part( 'template-parts/content', 'homebrew' );
+				endforeach ;
+				wp_reset_postdata();
+				?>
+			</div> -->
 			<!-- <a href="<?php echo get_post_type_archive_link('endorsements') ?>" class="_display">View All </a> -->
 		</div>
 	</section>

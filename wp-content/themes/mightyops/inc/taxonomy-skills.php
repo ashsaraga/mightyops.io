@@ -29,7 +29,9 @@ function create_skills() {
     'rewrite' => array( 'slug' => 'topic' )
   );
 
-  register_taxonomy( 'skills', 'clients' , $args);
+  $posts = array('clients', 'homebrew');
+
+  register_taxonomy( 'skills', $posts , $args);
 }
 
 add_action( 'init', 'create_skills', 0 );
