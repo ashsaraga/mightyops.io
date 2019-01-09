@@ -19,8 +19,7 @@ if ( is_front_page() ) { ?>
 <article id="progress_<?php echo the_title(); ?>" <?php post_class( $homeClasses ); ?>>
 	<div>
 		<h4 class="is-size-5 has-margin-none has-text-weight-regular has-letter-spacing-2">
-			<span class="icon has-text-<?php echo $iconSet; ?> has-margin-none has-padding-8 has-padding-left is-size-4 has-text-weight-regular <?php if ( $stack == 'front-end' ) { echo 'has-text-mod3'; } else if ( $stack == 'back-end' ) { echo 'has-text-mod5'; } ?>"><?php echo $icon; ?></span>
-			<?php echo the_title(); ?>
+			<span class="icon has-text-<?php echo $iconSet; ?> has-margin-none is-size-5 has-text-weight-regular <?php if ( $stack == 'front-end' ) { echo 'has-text-mod3'; } else if ( $stack == 'back-end' ) { echo 'has-text-mod5'; } ?>"><?php echo $icon; ?></span><?php echo the_title(); ?>
 		</h4>
 		<progress value="<?php echo $rating; ?>" max="100"></progress>
 		<h5 class="is-size-7 has-margin-none has-text-right has-text-mod3 <?php if ( $stack == 'front-end' ) { echo 'has-text-mod3'; } else if ( $stack == 'back-end' ) { echo 'has-text-mod5'; } ?> has-text-weight-bold is-uppercase"><?php if ( $rating <= 25 ) { echo 'Novice'; } else if ( $rating <= 51 ) { echo 'Intermediate'; } else if ( $rating < 76 ) { echo 'Professional'; } else if ( $rating <= 100 ) { echo 'Expert'; } ?></h5>
