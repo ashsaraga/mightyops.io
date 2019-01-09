@@ -22,7 +22,7 @@ if ( is_front_page() ) { ?>
 			<span class="icon has-text-<?php echo $iconSet; ?> has-margin-none is-size-5 has-text-weight-regular <?php if ( $stack == 'front-end' ) { echo 'has-text-mod3'; } else if ( $stack == 'back-end' ) { echo 'has-text-mod5'; } ?>"><?php echo $icon; ?></span><?php echo the_title(); ?>
 		</h4>
 		<progress value="<?php echo $rating; ?>" max="100"></progress>
-		<h5 class="is-size-7 has-margin-none has-text-right has-text-mod3 <?php if ( $stack == 'front-end' ) { echo 'has-text-mod3'; } else if ( $stack == 'back-end' ) { echo 'has-text-mod5'; } ?> has-text-weight-bold is-uppercase"><?php if ( $rating <= 25 ) { echo 'Novice'; } else if ( $rating <= 51 ) { echo 'Intermediate'; } else if ( $rating < 76 ) { echo 'Professional'; } else if ( $rating <= 100 ) { echo 'Expert'; } ?></h5>
+		<h5 class="is-size-7 has-margin-none has-text-right <?php if ( $stack == 'front-end' ) { echo 'has-text-mod3'; } else if ( $stack == 'back-end' ) { echo 'has-text-mod5'; } ?> has-text-weight-regular is-uppercase"><?php if ( $rating <= 25 ) { echo 'Novice'; } else if ( $rating <= 51 ) { echo 'Proficient'; } else if ( $rating < 76 ) { echo 'Fluent'; } else if ( $rating <= 100 ) { echo 'Expert'; } ?></h5>
 	</div>
 <?php
 }

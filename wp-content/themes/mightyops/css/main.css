@@ -36,7 +36,7 @@ html {
 @media screen and (min-width: 770px) {
 	html { font-size: 80%; }
 }
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1050px) {
 	html { font-size: 100%; }
 }
 html,
@@ -473,6 +473,15 @@ progress::-moz-progress-bar {
   border: 1.5px solid #29293a;
   border-radius: 4px;
   width: 100%;
+}
+
+@media screen and (min-width: 770px) {
+	.portrait {
+		background-image: url(../img/background_portrait.jpg), linear-gradient(#3a3a54, #3a3a54);
+		background-position: right top 50%, center center;
+		background-repeat: no-repeat;
+		background-size: 33% auto, cover;
+	}
 }
 
 /*.portrait {
