@@ -28,4 +28,4 @@ local/
 # Vagrant + WordPress
 .vagrant
 *.log
-html/wp-config.php
+wp-config.php
