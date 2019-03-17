@@ -1,5 +1,4 @@
-# underscores | Middle Seat
-Starter theme for Midde Seat theme development.
+# MightyOps | underscores 
 
 ### First Steps:
 1. Run a search and replace for `_mightyops`.
