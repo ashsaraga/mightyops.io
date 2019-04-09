@@ -64,6 +64,7 @@ a:visited {
 	text-decoration: none;
 }
 a:hover {
+	color: inherit;
 	opacity: .9 !important;
 }
 
