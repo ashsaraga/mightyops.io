@@ -138,12 +138,14 @@ hr {
 	font-family: font-awesome;
 	font-style: normal;
 	font-weight: 400;
+	letter-spacing: normal;
 }
 
 .has-text-font-awesome-brands {
 	font-family: font-awesome-brands;
 	font-style: normal;
 	font-weight: 400;
+	letter-spacing: normal;
 }
 
 .has-text-weight-light { font-weight: 300; }
