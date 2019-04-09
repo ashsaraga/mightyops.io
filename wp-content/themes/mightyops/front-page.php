@@ -119,7 +119,7 @@ get_header();
 			<div class="fits-flex-66">
 				<h2 class="is-size-3 has-text-weight-medium">About <span class="has-underline-modGradient">Mighty.</span></h2>
 				<p class="is-size-5 has-text-weight-regular">I began freelancing as one of many jobs during college, after deciding Adobe Illustrator looked fun to learn.  Over the seven years since then it's become an anchor for my most passionate work.</p>
-				<p class="is-size-5 has-text-weight-regular">In 2017 I joined Middle Seat, a digital consulting firm, working two years to build and lead the development program.  These days I can be found in DC doing progressive campaigning and coding the occasional text-based adventure game.</p>
+				<p class="is-size-5 has-text-weight-regular">In 2017 I joined Middle Seat, a digital consulting firm, working two years to build and lead the development program.  These days I can be found down South doing progressive campaigning and coding the occasional text-based adventure game.</p>
 			</div>
 			<div class="fits-flex-33"></div>
 		</div>
