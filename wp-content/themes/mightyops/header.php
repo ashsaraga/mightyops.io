@@ -64,17 +64,24 @@
 </svg>
 
 <body <?php body_class( 'mod-code' ); ?>>
+<?php 
+	if ( is_404() ) {
+		echo '<div class="expanse"></div>';
+	}
+?>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'mightyops | Mighty' ); ?></a>
 
-	<header id="masthead" class="site-header has-position-absolute">
+	<header id="masthead" class="site-header">
 		<div class="is-flex">
 			<div></div>
-			<div>
+			<div class="logo">
 				<?php if ( !is_front_page() ) { ?>
-				<svg>
-					<use xlink:href="#mighty"></use>
-				</svg>
+				<a href="<?php echo home_url(); ?>" title="Home" class="is-flex">
+					<svg>
+						<use xlink:href="#mighty"></use>
+					</svg>
+				</a>
 				<?php } ?>
 			</div>
 			<div></div>

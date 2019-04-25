@@ -412,9 +412,15 @@ footer > div {
 .has-position-fixed { position: fixed; }
 
 /* ----  Styling  ---- */
+header .logo svg {
+	height: 4.5rem;
+	margin: .5rem;
+	width: 4.5rem;
+}
+
 .home .hero {
 	background-blend-mode: overlay, normal;
-	background-image: url(../img/header_code.svg), linear-gradient(var(--evening), var(--evening));
+	background-image: url(../img/header_code.svg), linear-gradient(var(--midnight), var(--midnight));
 	background-position: 16% 2.5vw, center center;
 	background-repeat: repeat-y, no-repeat;
 	background-size: 84% auto, cover;
@@ -591,4 +597,27 @@ footer nav ul li {
 	left: calc(50vw - 1.25rem);
 	width: 2.5rem;
 	z-index: 5;
+}
+
+/* ----  Starfield  ---- */
+.expanse {
+  height: 100vh;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top:0;
+  width: 100vw;
+  z-index: -1;
+}
+
+.galaxy {
+	position: absolute;
+}
+
+.star {
+  background-color: white;
+  border-radius: 50%;
+  height: 0.1875rem;
+  position: absolute;
+  width: 0.1875rem;
 }

@@ -114,6 +114,10 @@ function _mightyops_scripts() {
 	// Accio Script
 	wp_enqueue_script('_accio-scripts', get_template_directory_uri() . '/js/castAccio.js', array('jquery'), true);
 
+	if ( is_404() ) {
+		wp_enqueue_script('_energize-scripts', get_template_directory_uri() . '/js/energize.js', array('jquery'), true);
+	}
+
 	// _s Scripts
 	wp_enqueue_script('_mightyops-scripts', get_template_directory_uri() . '/js/main.js', array('jquery'), true);
 

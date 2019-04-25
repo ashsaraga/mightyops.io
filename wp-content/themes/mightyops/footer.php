@@ -11,7 +11,7 @@
 
 ?>
 
-	<footer class="has-background-midnight has-text-white has-text-centered">
+	<footer class="has-text-white has-text-centered">
 		<div>
 			<div class="has-text-centered">
 				<svg class="logo">
