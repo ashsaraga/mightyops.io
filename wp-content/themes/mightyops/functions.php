@@ -160,7 +160,7 @@ require get_template_directory() . '/inc/posttype-clients.php';
 // Skills
 require get_template_directory() . '/inc/posttype-skills.php';
 // Homebrews
-// require get_template_directory() . '/inc/posttype-homebrew.php';
+require get_template_directory() . '/inc/posttype-homebrew.php';
 
 /**
  * Custom Taxonomies

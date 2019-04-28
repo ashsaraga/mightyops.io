@@ -53,6 +53,14 @@ function create__homebrew__meta() {
 		'side',  // positions the meta box on right column (side) or main column (normal)
 		'high'  // positions the meta box at the top (high) or bottom (low) of its context
 	);
+	add_meta_box(
+		'homebrew_code',  // sets ID for the meta box attribute
+		'Project Code',  // Title of the meta box
+		'homebrew_code',  // sets callback function to echo the box output
+		'homebrew',  // sets screens where the meta box will appear
+		'normal',  // positions the meta box on right column (side) or main column (normal)
+		'high'  // positions the meta box at the top (high) or bottom (low) of its context
+	);
 }
 
 function homebrew_details() {
@@ -61,15 +69,27 @@ function homebrew_details() {
 	wp_nonce_field( basename( __FILE__ ), 'homebrew__meta_nonce' );  // sets nonce to be checked when saving meta
 
 	$github = get_post_meta( $post->ID, '_github', true );
-	$services = get_post_meta( $post->ID, '_services', true );
+	// $services = get_post_meta( $post->ID, '_services', true );
 
 	// outputs a simple text field
 	echo'<label for="_github">Link to GitHub Repo:</label>';
 	echo '<input type="text" name="_github" id="_github" value="' . esc_textarea( $github )  . '" class="widefat">';
 }
 
+function homebrew_code() {
+	global $post;  // set $post to the current post ID
+	$originalpost = $post;  // stores the current $post so it can be reset after a wp_query()
+	wp_nonce_field( basename( __FILE__ ), 'homebrew__meta_nonce' );  // sets nonce to be checked when saving meta
+
+	$code = get_post_meta( $post->ID, '_code', true );
+
+	// outputs a simple text field
+	echo '<textarea name="_code" rows="10" class="widefat">' . esc_textarea( $code ) .'</textarea>';
+
+}
+
 // saves custom meta box data
-function save__clients__meta( $post_id, $post ) {
+function save__homebrew__meta( $post_id, $post ) {
 	// return if the user doesn't have edit permissions.
 	if ( ! current_user_can( 'edit_post', $post_id ) ) {
 		return $post_id;
@@ -80,6 +100,7 @@ function save__clients__meta( $post_id, $post ) {
 	}
 
 	$meta_array['_github'] = esc_attr( $_POST['_github'] );
+	$meta_array['_code'] = esc_attr( $_POST['_code'] );
 
 	foreach ( $meta_array as $key => $value ) :
 		// avoid duplicate data during revisions
@@ -99,4 +120,4 @@ function save__clients__meta( $post_id, $post ) {
 		}
 	endforeach;
 }
-add_action( 'save_post', 'save__clients__meta', 10, 2 );  // hook to 'save_post' action, $callback, priority (1-10:high-low), $callback args
+add_action( 'save_post', 'save__homebrew__meta', 10, 2 );  // hook to 'save_post' action, $callback, priority (1-10:high-low), $callback args
