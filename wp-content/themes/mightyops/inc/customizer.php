@@ -2,7 +2,7 @@
 /**
  * mightyops | Mighty Theme Customizer
  *
- * @package _s_|_Middle_Seat
+ * @package mightyops
  */
 
 /**

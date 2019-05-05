@@ -2,7 +2,7 @@
 /**
  * Functions which enhance the theme by hooking into WordPress
  *
- * @package _s_|_Middle_Seat
+ * @package mightyops
  */
 
 /**

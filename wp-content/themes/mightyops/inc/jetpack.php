@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.com/
  *
- * @package _s_|_Middle_Seat
+ * @package mightyops
  */
 
 /**

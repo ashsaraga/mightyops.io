@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package _s_|_Middle_Seat
+ * @package mightyops
  */
 
 if ( ! function_exists( '_mightyops_setup' ) ) :

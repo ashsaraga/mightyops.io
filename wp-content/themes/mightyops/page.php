@@ -9,7 +9,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package _s_|_Middle_Seat
+ * @package mightyops
  */
 
 get_header();

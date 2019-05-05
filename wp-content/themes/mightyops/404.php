@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package _s_|_Middle_Seat
+ * @package mightyops
  */
 
 get_header();

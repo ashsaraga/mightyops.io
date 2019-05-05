@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package _s_|_Middle_Seat
+ * @package mightyops
  */
 
 get_header();

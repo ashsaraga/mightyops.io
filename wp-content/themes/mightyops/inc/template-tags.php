@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package _s_|_Middle_Seat
+ * @package mightyops
  */
 
 if ( ! function_exists( '_mightyops_posted_on' ) ) :
