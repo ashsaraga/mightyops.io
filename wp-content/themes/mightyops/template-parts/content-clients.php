@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Perseus_|_Middle_Seat
+ * @package mightyops
  */
 
 $client = $image_attributes = wp_get_attachment_image_src( $attachment_id = get_post_meta( $post->ID, '_client', true ) );

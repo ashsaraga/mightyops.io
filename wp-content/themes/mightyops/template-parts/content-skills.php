@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Perseus_|_Middle_Seat
+ * @package mightyops
  */
 
 $rating = get_post_meta( $post->ID, '_rating', true );
