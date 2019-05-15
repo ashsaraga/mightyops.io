@@ -213,6 +213,17 @@ add_filter( 'get_the_archive_title', function ($title) {
   return $title;
 });
 
+// Customize the WordPress login screen
+function custom_login() {
+echo '<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/css/login-styles.css" />';
+}
+add_action('login_head', 'custom_login');
+
+function custom_loginlogo_url($url) {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'custom_loginlogo_url' );
+
 /* Disable Comments Block --------------------------------------------------------------- */
 // Disable support for comments and trackbacks in post types
 function df_disable_comments_post_types_support() {
