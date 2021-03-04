@@ -32,10 +32,10 @@ function create__approvals() {
     'supports' => array(  // sets core features for post type
       'title',
       'editor',
-      'comments'
+      'comments',
       // 'excerpt',
-      // 'thumbnail',
-      // 'revisions'
+      'thumbnail',
+      'revisions'
     ),
     'register_meta_box_cb' => 'create__approvals__meta', // sets callback function for custom meta fields
     'has_archive' => false  // creates archive page for post type (true)
@@ -46,20 +46,20 @@ add_action( 'init', 'create__approvals' );
 
 // creates custom meta boxes
 function create__approvals__meta() {
-  // add_meta_box(
-  //   'approvals__client',  // sets ID for the meta box attribute
-  //   'Client',  // Title of the meta box
-  //   'approvals__client',  // sets callback function to echo the box output
-  //   'approvals',  // sets screens where the meta box will appear
-  //   'side',  // positions the meta box on right column (side) or main column (normal)
-  //   'high'  // positions the meta box at the top (high) or bottom (low) of its context
-  // );
+  add_meta_box(
+    'approvals__client',  // sets ID for the meta box attribute
+    'Client',  // Title of the meta box
+    'approvals__client',  // sets callback function to echo the box output
+    'approvals',  // sets screens where the meta box will appear
+    'side',  // positions the meta box on right column (side) or main column (normal)
+    'high'  // positions the meta box at the top (high) or bottom (low) of its context
+  );
   add_meta_box(
     'approvals__status',  // sets ID for the meta box attribute
     'Approval Status',  // Title of the meta box
     'approvals__status',  // sets callback function to echo the box output
     'approvals',  // sets screens where the meta box will appear
-    'advanced',  // positions the meta box on right column (side) or main column (normal)
+    'side',  // positions the meta box on right column (side) or main column (normal)
     'high'  // positions the meta box at the top (high) or bottom (low) of its context
   );
   add_meta_box(
@@ -86,24 +86,28 @@ function approvals__client() {
   wp_nonce_field( basename( __FILE__ ), 'approvals__meta_nonce' );  // sets nonce to be checked when saving meta
 
   $approvalClient = get_post_meta( $post->ID, '_approvalClient', true );
-  $currentClients = get_posts([
-    'post_type' => 'clients',
-    'post_status' => 'publish',
-    'numberposts' => -1,
-    'order'    => 'ASC'
-  ]);
+
+  $clientQuery = array( 'post_type' => 'clients', 'post_status' => 'publish', 'orderby' => 'title', 'order' => 'ASC' ); 
+  $currentClients = new WP_Query( $clientQuery ); 
+
   ?>
   <!-- generating <select> -->
   <div style="margin: .75rem 0;">
     <label for="_approvalClient">Client</label>
     <select name="_approvalClient" class="widefat">
-      <option value="" disabled>unset</option>
+      <option value="" disabled> --- </option>
       <?php 
-      foreach ($currentClients as $client) {        
-        ?>
-        <option value="<?php printf( esc_html($client->name) ); ?>" <?php selected( $approvalClient, printf( esc_html($client->name) ) ); ?> ><?php printf( esc_html($client->name) ); ?></option>
-        <?php
+      if ( $currentClients->have_posts() ) { 
+        while ( $currentClients->have_posts() ) { 
+          $currentClients->the_post(); 
+          $client = esc_html(get_the_title()); 
+          ?>
+            <option value="<?php echo $client; ?>" <?php selected( $approvalClient, $client ); ?> ><?php echo $client; ?></option>
+          <?php 
+        }
       }
+      $post = $originalpost;
+      wp_reset_postdata();
       ?>
     </select>
   </div>
@@ -118,10 +122,10 @@ function approvals__status() {
   $status = get_post_meta( $post->ID, '_status', true ); 
   ?>
   <!-- generating <select> -->
-  <div style="margin: .75rem 0;">
+  <div>
     <label for="_status">Approval Status</label>
     <select name="_status" class="widefat">
-      <option value="" disabled>unset</option>
+      <option value="" disabled> --- </option>
       <option value="initial review" <?php selected( $status, 'initial review' ); ?> >Initial Review</option>
       <option value="edits pending" <?php selected( $status, 'edits pending' ); ?> >Edits Pending</option>
       <option value="in review" <?php selected( $status, 'in review' ); ?> >In Review</option> 
@@ -144,8 +148,10 @@ function approvals__next() {
   <label for="_nextItem">Next Item:</label>
   <input type="text" name="_nextItem" id="_nextItem" value="<?php echo esc_textarea($nextItem) ?>" class="widefat">
   <!-- generating date <input> -->
-  <label for="_nextDate">Start Date:</label>
-  <input type="date" name="_nextDate" id="_nextDate" value="<?php echo esc_textarea($nextDate)?>">
+  <div style="margin: .25rem 0 0 0;">
+    <label for="_nextDate">Start Date:</label>
+    <input type="date" name="_nextDate" id="_nextDate" value="<?php echo esc_textarea($nextDate)?>" class="widefat">
+  </div>
   <?php
 }
 

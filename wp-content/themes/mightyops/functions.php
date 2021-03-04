@@ -168,7 +168,40 @@ require get_template_directory() . '/inc/posttype-approvals.php';
  * Custom Taxonomies
  */
 // Skills
-require get_template_directory() . '/inc/taxonomy-skills.php';
+require get_template_directory() . '/inc/taxonomy-skills.php'; 
+
+/**
+ * Custom Comments 
+ */
+// Comments 
+
+function approvals__comments($comment, $args, $depth) {
+   $GLOBALS['comment'] = $comment; ?>
+   <li <?php comment_class( "has-background-daybreak has-text-black has-margin-7 has-margin-bottom has-borderradius-02" ); ?> id="li-comment-<?php comment_ID() ?>">
+     <div id="comment-<?php comment_ID(); ?>">
+      <div class="comment-author vcard is-uppercase has-background-prism is-size-8 has-padding-8 has-margin-none">
+         <?php 
+         $author_name = get_comment_author_link();
+         if ( $author_name == 'Client' ) {
+         	echo "Client";
+         } else {
+         	echo "Mighty";
+         }
+         ?>
+      </div>
+      <?php if ($comment->comment_approved == '0') : ?>
+         <em><?php _e('Your comment is awaiting moderation.') ?></em>
+         <br />
+      <?php endif; ?>
+
+      <div class="comment-meta commentmetadata has-padding-8 is-size-6">
+      	<p class="is-size-8 has-text-evening comment-date"><?php printf(__('%1$s'), get_comment_date()) ?></p>
+      	<?php comment_text() ?>
+      </div>
+     </div>
+   </li>
+<?php
+}
 
 // Enable WP media uploader for custom post types
 function media_uploader() {
@@ -289,3 +322,10 @@ function df_disable_comments_admin_bar() {
 
 add_action('init', 'df_disable_comments_admin_bar');
 /* End Disable Comments Block ----------------------------------------------------------- */
+
+// Move all "advanced" metaboxes above the default editor
+// add_action('edit_form_after_title', function() {
+//     global $post, $wp_meta_boxes;
+//     do_meta_boxes(get_current_screen(), 'advanced', $post);
+//     unset($wp_meta_boxes[get_post_type($post)]['advanced']);
+// });
