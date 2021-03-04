@@ -161,12 +161,47 @@ require get_template_directory() . '/inc/posttype-clients.php';
 require get_template_directory() . '/inc/posttype-skills.php';
 // Homebrews
 require get_template_directory() . '/inc/posttype-homebrew.php';
+// Approvals 
+require get_template_directory() . '/inc/posttype-approvals.php';
 
 /**
  * Custom Taxonomies
  */
 // Skills
-require get_template_directory() . '/inc/taxonomy-skills.php';
+require get_template_directory() . '/inc/taxonomy-skills.php'; 
+
+/**
+ * Custom Comments 
+ */
+// Comments 
+
+function approvals__comments($comment, $args, $depth) {
+   $GLOBALS['comment'] = $comment; ?>
+   <li <?php comment_class( "has-background-daybreak has-text-black has-margin-7 has-margin-bottom has-borderradius-02" ); ?> id="li-comment-<?php comment_ID() ?>">
+     <div id="comment-<?php comment_ID(); ?>">
+      <div class="comment-author vcard is-uppercase has-background-prism is-size-8 has-padding-8 has-margin-none">
+         <?php 
+         $author_name = get_comment_author_link();
+         if ( $author_name == 'Client' ) {
+         	echo "Client";
+         } else {
+         	echo "Mighty";
+         }
+         ?>
+      </div>
+      <?php if ($comment->comment_approved == '0') : ?>
+         <em><?php _e('Your comment is awaiting moderation.') ?></em>
+         <br />
+      <?php endif; ?>
+
+      <div class="comment-meta commentmetadata has-padding-8 is-size-6">
+      	<p class="is-size-8 has-text-evening comment-date"><?php printf(__('%1$s'), get_comment_date()) ?></p>
+      	<?php comment_text() ?>
+      </div>
+     </div>
+   </li>
+<?php
+}
 
 // Enable WP media uploader for custom post types
 function media_uploader() {
@@ -224,35 +259,35 @@ function custom_loginlogo_url($url) {
 }
 add_filter( 'login_headerurl', 'custom_loginlogo_url' );
 
-/* Disable Comments Block --------------------------------------------------------------- */
-// Disable support for comments and trackbacks in post types
-function df_disable_comments_post_types_support() {
-	$post_types = get_post_types();
-	foreach ($post_types as $post_type) {
-		if(post_type_supports($post_type, 'comments')) {
-			remove_post_type_support($post_type, 'comments');
-			remove_post_type_support($post_type, 'trackbacks');
-		}
-	}
-}
+// /* Disable Comments Block --------------------------------------------------------------- */
+// // Disable support for comments and trackbacks in post types
+// function df_disable_comments_post_types_support() {
+// 	$post_types = get_post_types();
+// 	foreach ($post_types as $post_type) {
+// 		if(post_type_supports($post_type, 'comments')) {
+// 			remove_post_type_support($post_type, 'comments');
+// 			remove_post_type_support($post_type, 'trackbacks');
+// 		}
+// 	}
+// }
 
-add_action('admin_init', 'df_disable_comments_post_types_support');
+// add_action('admin_init', 'df_disable_comments_post_types_support');
 
 // Close comments on the front-end
-function df_disable_comments_status() {
-	return false;
-}
+// function df_disable_comments_status() {
+// 	return false;
+// }
 
-add_filter('comments_open', 'df_disable_comments_status', 20, 2);
-add_filter('pings_open', 'df_disable_comments_status', 20, 2);
+// add_filter('comments_open', 'df_disable_comments_status', 20, 2);
+// add_filter('pings_open', 'df_disable_comments_status', 20, 2);
 
-// Hide existing comments
-function df_disable_comments_hide_existing_comments($comments) {
-	$comments = array();
-	return $comments;
-}
+// // Hide existing comments
+// function df_disable_comments_hide_existing_comments($comments) {
+// 	$comments = array();
+// 	return $comments;
+// }
 
-add_filter('comments_array', 'df_disable_comments_hide_existing_comments', 10, 2);
+// add_filter('comments_array', 'df_disable_comments_hide_existing_comments', 10, 2);
 
 // Remove comments page in menu
 function df_disable_comments_admin_menu() {
@@ -261,15 +296,15 @@ function df_disable_comments_admin_menu() {
 
 add_action('admin_menu', 'df_disable_comments_admin_menu');
 
-// Redirect any user trying to access comments page
-function df_disable_comments_admin_menu_redirect() {
-	global $pagenow;
-	if ($pagenow === 'edit-comments.php') {
-		wp_redirect(admin_url()); exit;
-	}
-}
+// // Redirect any user trying to access comments page
+// function df_disable_comments_admin_menu_redirect() {
+// 	global $pagenow;
+// 	if ($pagenow === 'edit-comments.php') {
+// 		wp_redirect(admin_url()); exit;
+// 	}
+// }
 
-add_action('admin_init', 'df_disable_comments_admin_menu_redirect');
+// add_action('admin_init', 'df_disable_comments_admin_menu_redirect');
 
 // Remove comments metabox from dashboard
 function df_disable_comments_dashboard() {
@@ -287,3 +322,10 @@ function df_disable_comments_admin_bar() {
 
 add_action('init', 'df_disable_comments_admin_bar');
 /* End Disable Comments Block ----------------------------------------------------------- */
+
+// Move all "advanced" metaboxes above the default editor
+// add_action('edit_form_after_title', function() {
+//     global $post, $wp_meta_boxes;
+//     do_meta_boxes(get_current_screen(), 'advanced', $post);
+//     unset($wp_meta_boxes[get_post_type($post)]['advanced']);
+// });
